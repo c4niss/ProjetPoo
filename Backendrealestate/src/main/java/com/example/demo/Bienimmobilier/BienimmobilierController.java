@@ -31,13 +31,14 @@ public class BienimmobilierController {
     @DeleteMapping(path = "{bienid}")
     public void deleteStudent(@PathVariable("bienid") int bienid){
         bienimmobilierService.deleteBien(bienid);
-    }
-    @PutMapping(path="{bienid}")
+    }@PutMapping(path="{bienid}")
     public void updatebien(@PathVariable("bienid") int bienid,
-                                  @RequestParam(required = false) String description,
-                                  @RequestParam(required = false) Bienimmobiliertype type,
-                                  @RequestParam(required = false) int prix){
-        bienimmobilierService.updatebienimmobilier(bienid,description, type,prix);
+                           @RequestParam(required = false) String description,
+                           @RequestParam(required = false) Bienimmobiliertype type,
+                           @RequestParam(required = false) int prix,
+                           @RequestParam(required = false) Bienetat etat) {  // Add etat parameter
+        bienimmobilierService.updatebienimmobilier(bienid, description, type, prix, etat);  // Pass etat to the service
     }
+
 
 }

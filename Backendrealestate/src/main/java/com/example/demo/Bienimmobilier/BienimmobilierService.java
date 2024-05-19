@@ -33,7 +33,7 @@ public class BienimmobilierService {
     }
 
     @Transactional
-    public void updatebienimmobilier(int bienid, String description, Bienimmobiliertype type, int prix) {
+    public void updatebienimmobilier(int bienid, String description, Bienimmobiliertype type, int prix, Bienetat etat) {
         Bienimmobilier bienimmobilier = bienimmobilierRepository.findById(bienid).orElseThrow(() -> new IllegalStateException("bien not found"));
         if (prix > 0 && !Objects.equals(bienimmobilier.getPrix(), prix)) {
             bienimmobilier.setPrix(prix);
@@ -43,6 +43,9 @@ public class BienimmobilierService {
         }
         if (description !=null && !Objects.equals(bienimmobilier.getDescription(), description)) {
             bienimmobilier.setDescription(description);
+        }
+        if (etat !=null && !Objects.equals(bienimmobilier.getEtat(), etat)) {
+            bienimmobilier.setEtat(etat);
         }
     }
 
